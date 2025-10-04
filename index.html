@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Biological Science Archive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg viewBox="0 0 200 40" class="nasa-logo">
+                        <text x="10" y="28" class="logo-text">NASA</text>
+                    </svg>
+                </div>
+                <h1 class="header-title">Biological Science Archive</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">NASA Biological Science Archive</h2>
+                    <p class="hero-subtitle">Exploring the Frontiers of Life in Space</p>
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="mainSearch" placeholder="Search across 607 research papers..." class="search-input">
+                            <button type="button" id="searchButton" class="search-button">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Loading research papers...</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Column - Filters -->
+                <aside class="filters-section">
+                    <div class="filters-card">
+                        <div class="filters-header">
+                            <h3 class="filters-title">Filter Results</h3>
+                            <button id="clearFilters" class="clear-filters-btn">Clear All</button>
+                        </div>
+                        
+                        <!-- Date Range -->
+                        <div class="filter-group">
+                            <label for="startDate" class="filter-label">Starting Date</label>
+                            <input type="date" id="startDate" class="date-input">
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="endDate" class="filter-label">Ending Date</label>
+                            <input type="date" id="endDate" class="date-input">
+                        </div>
+
+                        <!-- Author -->
+                        <div class="filter-group">
+                            <label for="authorFilter" class="filter-label">Author</label>
+                            <input type="text" id="authorFilter" placeholder="Search by author name" class="filter-input">
+                        </div>
+
+                        <!-- Publication -->
+                        <div class="filter-group">
+                            <label for="publicationFilter" class="filter-label">Publication</label>
+                            <input type="text" id="publicationFilter" placeholder="Search by publication" class="filter-input">
+                        </div>
+
+                        <!-- Keywords -->
+                        <div class="filter-group">
+                            <label for="keywordFilter" class="filter-label">Keywords</label>
+                            <input type="text" id="keywordFilter" placeholder="Search by keywords" class="filter-input">
+                        </div>
+
+                        <!-- Popular Keywords -->
+                        <div class="filter-group" id="popularKeywords">
+                            <label class="filter-label">Popular Keywords</label>
+                            <div class="popular-keywords-container">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right Column - Results -->
+                <section class="results-section">
+                    <div class="results-header">
+                        <h3 class="results-title">Research Articles</h3>
+                        <div class="results-controls">
+                            <div class="results-count" id="resultsCount">
+                                Showing 0 articles
+                            </div>
+                            <div class="sort-controls">
+                                <label for="sortBy">Sort by:</label>
+                                <select id="sortBy" class="sort-select">
+                                    <option value="date-desc">Date (Newest First)</option>
+                                    <option value="date-asc">Date (Oldest First)</option>
+                                    <option value="title-asc">Title (A-Z)</option>
+                                    <option value="title-desc">Title (Z-A)</option>
+                                    <option value="relevance">Relevance</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="articlesContainer" class="articles-container">
+                        <!-- Articles will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div id="paginationContainer" class="pagination-container">
+                        <button id="prevPage" class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <div id="pageNumbers" class="page-numbers">
+                            <!-- Page numbers will be populated by JavaScript -->
+                        </div>
+                        <button id="nextPage" class="pagination-btn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div id="noResults" class="no-results hidden">
+                        <i class="fas fa-search-minus"></i>
+                        <h4>No matching articles found</h4>
+                        <p>Try adjusting your search terms or filters.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

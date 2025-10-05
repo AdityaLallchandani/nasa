@@ -3,239 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space-Bio-Knowledge</title>
+    <title>NASA Biological Science Archive</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <h1>🚀 Space-Bio-Knowledge</h1>
-                        <p class="tagline">Exploring Life Beyond Earth</p>
-                    </div>
-                    <div class="header-controls">
-                        <div class="language-toggle">
-                            <button class="btn btn--sm" data-lang="en">EN</button>
-                            <button class="btn btn--sm" data-lang="es">ES</button>
-                            <button class="btn btn--sm" data-lang="zh">ZH</button>
-                        </div>
-                    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg viewBox="0 0 200 40" class="nasa-logo">
+                        <text x="10" y="28" class="logo-text">NASA</text>
+                    </svg>
                 </div>
+                <h1 class="header-title">Biological Science Archive</h1>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- Navigation -->
-        <nav class="navigation">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay">
             <div class="container">
-                <div class="nav-tabs">
-                    <button class="nav-tab active" data-tab="papers">
-                        <span class="nav-icon">📄</span>
-                        <span class="nav-text" data-translate="papers">Papers</span>
-                    </button>
-                    <button class="nav-tab" data-tab="graph">
-                        <span class="nav-icon">🔗</span>
-                        <span class="nav-text" data-translate="knowledge_graph">Knowledge Graph</span>
-                    </button>
-                    <button class="nav-tab" data-tab="ai">
-                        <span class="nav-icon">🤖</span>
-                        <span class="nav-text" data-translate="ai_assistant">AI Assistant</span>
-                    </button>
-                    <button class="nav-tab" data-tab="protocol">
-                        <span class="nav-icon">⚗️</span>
-                        <span class="nav-text" data-translate="protocol_planner">Protocol Planner</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Search Bar -->
-        <section class="search-section">
-            <div class="container">
-                <div class="search-bar">
-                    <div class="search-input-group">
-                        <input type="text" id="searchInput" class="form-control search-input" placeholder="Search papers, genes, proteins..." data-translate-placeholder="search">
-                        <button class="btn btn--primary search-btn" id="searchBtn">
-                            🔍 <span data-translate="search">Search</span>
-                        </button>
-                    </div>
-                    <div class="search-filters">
-                        <select class="form-control filter-select" id="topicFilter">
-                            <option value="">All Topics</option>
-                            <option value="bone">Bone Research</option>
-                            <option value="radiation">Radiation Effects</option>
-                            <option value="stem-cell">Stem Cell</option>
-                            <option value="cardiac">Cardiac Studies</option>
-                        </select>
-                        <select class="form-control filter-select" id="yearFilter">
-                            <option value="">All Years</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <div class="container">
-                <!-- Papers Section -->
-                <section id="papers-section" class="content-section active">
-                    <div class="section-header">
-                        <h2 data-translate="papers">Papers</h2>
-                        <div class="stats">
-                            <span class="stat-item">
-                                <span class="stat-number" id="paperCount">5</span>
-                                <span class="stat-label">Research Papers</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="papers-grid" id="papersGrid">
-                        <!-- Papers will be populated here -->
-                    </div>
-                </section>
-
-                <!-- Knowledge Graph Section -->
-                <section id="graph-section" class="content-section">
-                    <div class="section-header">
-                        <h2 data-translate="knowledge_graph">Knowledge Graph</h2>
-                        <div class="graph-controls">
-                            <button class="btn btn--secondary" id="resetGraphBtn">Reset View</button>
-                            <button class="btn btn--secondary" id="expandGraphBtn">Expand All</button>
-                        </div>
-                    </div>
-                    <div class="graph-container">
-                        <canvas id="graphCanvas" width="800" height="600"></canvas>
-                        <div class="graph-legend">
-                            <div class="legend-item">
-                                <div class="legend-color gene"></div>
-                                <span>Genes</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color cell"></div>
-                                <span>Cells</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color organism"></div>
-                                <span>Organisms</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color process"></div>
-                                <span>Processes</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="legend-color condition"></div>
-                                <span>Conditions</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="node-details" id="nodeDetails">
-                        <h3>Select a node to see details</h3>
-                    </div>
-                </section>
-
-                <!-- AI Assistant Section -->
-                <section id="ai-section" class="content-section">
-                    <div class="section-header">
-                        <h2 data-translate="ai_assistant">AI Assistant</h2>
-                        <p class="section-description">Ask questions about space biology research</p>
-                    </div>
-                    <div class="ai-interface">
-                        <div class="example-questions">
-                            <h3>Example Questions:</h3>
-                            <div class="example-question-list">
-                                <button class="example-question" data-question="How does microgravity affect bone density?">
-                                    How does microgravity affect bone density?
-                                </button>
-                                <button class="example-question" data-question="What are the effects of space radiation on biological systems?">
-                                    What are the effects of space radiation on biological systems?
-                                </button>
-                                <button class="example-question" data-question="How do plants respond to spaceflight conditions?">
-                                    How do plants respond to spaceflight conditions?
-                                </button>
-                            </div>
-                        </div>
-                        <div class="chat-container" id="chatContainer">
-                            <div class="chat-messages" id="chatMessages">
-                                <div class="chat-message ai-message">
-                                    <div class="message-content">
-                                        <p>Hello! I'm your AI assistant for space biology research. Ask me anything about the effects of space conditions on biological systems.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-input-area">
-                            <div class="chat-input-group">
-                                <input type="text" id="questionInput" class="form-control chat-input" placeholder="Ask a question about space biology..." data-translate-placeholder="ask_question">
-                                <button class="btn btn--primary" id="askBtn">
-                                    <span data-translate="ask_question">Ask</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Protocol Planner Section -->
-                <section id="protocol-section" class="content-section">
-                    <div class="section-header">
-                        <h2 data-translate="protocol_planner">Protocol Planner</h2>
-                        <p class="section-description">Generate experimental protocols for space biology research</p>
-                    </div>
-                    <div class="protocol-interface">
-                        <div class="protocol-input">
-                            <label class="form-label" for="goalInput">Experimental Goal:</label>
-                            <textarea id="goalInput" class="form-control protocol-textarea" rows="3" placeholder="Describe your experimental goal (e.g., 'Study the effects of microgravity on plant root development')"></textarea>
-                            <button class="btn btn--primary" id="generateProtocolBtn">
-                                ⚗️ <span data-translate="generate_protocol">Generate Protocol</span>
+                <div class="hero-content">
+                    <h2 class="hero-title">NASA Biological Science Archive</h2>
+                    <p class="hero-subtitle">Exploring the Frontiers of Life in Space</p>
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="mainSearch" placeholder="Search across 607 research papers..." class="search-input">
+                            <button type="button" id="searchButton" class="search-button">
+                                <i class="fas fa-search"></i>
+                                Search
                             </button>
                         </div>
-                        <div class="protocol-output" id="protocolOutput">
-                            <div class="protocol-placeholder">
-                                <p>Enter an experimental goal above to generate a detailed protocol.</p>
-                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Loading research papers...</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Column - Filters -->
+                <aside class="filters-section">
+                    <div class="filters-card">
+                        <div class="filters-header">
+                            <h3 class="filters-title">Filter Results</h3>
+                            <button id="clearFilters" class="clear-filters-btn">Clear All</button>
                         </div>
-                        <div class="example-protocols">
-                            <h3>Example Goals:</h3>
-                            <div class="example-protocol-list">
-                                <button class="example-protocol" data-goal="Study bone loss in microgravity">
-                                    Study bone loss in microgravity
-                                </button>
-                                <button class="example-protocol" data-goal="Assess plant growth in space conditions">
-                                    Assess plant growth in space conditions
-                                </button>
+                        
+                        <!-- Date Range -->
+                        <div class="filter-group">
+                            <label for="startDate" class="filter-label">Starting Date</label>
+                            <input type="date" id="startDate" class="date-input">
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="endDate" class="filter-label">Ending Date</label>
+                            <input type="date" id="endDate" class="date-input">
+                        </div>
+
+                        <!-- Author -->
+                        <div class="filter-group">
+                            <label for="authorFilter" class="filter-label">Author</label>
+                            <input type="text" id="authorFilter" placeholder="Search by author name" class="filter-input">
+                        </div>
+
+                        <!-- Publication -->
+                        <div class="filter-group">
+                            <label for="publicationFilter" class="filter-label">Publication</label>
+                            <input type="text" id="publicationFilter" placeholder="Search by publication" class="filter-input">
+                        </div>
+
+                        <!-- Keywords -->
+                        <div class="filter-group">
+                            <label for="keywordFilter" class="filter-label">Keywords</label>
+                            <input type="text" id="keywordFilter" placeholder="Search by keywords" class="filter-input">
+                        </div>
+
+                        <!-- Popular Keywords -->
+                        <div class="filter-group" id="popularKeywords">
+                            <label class="filter-label">Popular Keywords</label>
+                            <div class="popular-keywords-container">
+                                <!-- Populated by JavaScript -->
                             </div>
                         </div>
                     </div>
+                </aside>
+
+                <!-- Right Column - Results -->
+                <section class="results-section">
+                    <div class="results-header">
+                        <h3 class="results-title">Research Articles</h3>
+                        <div class="results-controls">
+                            <div class="results-count" id="resultsCount">
+                                Showing 0 articles
+                            </div>
+                            <div class="sort-controls">
+                                <label for="sortBy">Sort by:</label>
+                                <select id="sortBy" class="sort-select">
+                                    <option value="date-desc">Date (Newest First)</option>
+                                    <option value="date-asc">Date (Oldest First)</option>
+                                    <option value="title-asc">Title (A-Z)</option>
+                                    <option value="title-desc">Title (Z-A)</option>
+                                    <option value="relevance">Relevance</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="articlesContainer" class="articles-container">
+                        <!-- Articles will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div id="paginationContainer" class="pagination-container">
+                        <button id="prevPage" class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <div id="pageNumbers" class="page-numbers">
+                            <!-- Page numbers will be populated by JavaScript -->
+                        </div>
+                        <button id="nextPage" class="pagination-btn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div id="noResults" class="no-results hidden">
+                        <i class="fas fa-search-minus"></i>
+                        <h4>No matching articles found</h4>
+                        <p>Try adjusting your search terms or filters.</p>
+                    </div>
                 </section>
             </div>
-        </main>
-
-        <!-- Loading Overlay -->
-        <div class="loading-overlay" id="loadingOverlay">
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <p>Processing your request...</p>
-            </div>
         </div>
-
-        <!-- Paper Modal -->
-        <div class="modal hidden" id="paperModal">
-            <div class="modal-backdrop" id="modalBackdrop"></div>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 id="modalTitle">Paper Title</h3>
-                    <button class="modal-close" id="modalClose">×</button>
-                </div>
-                <div class="modal-body" id="modalBody">
-                    <!-- Paper details will be populated here -->
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
